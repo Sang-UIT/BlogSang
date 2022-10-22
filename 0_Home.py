@@ -1,3 +1,4 @@
+from tkinter import Button
 import streamlit as st
 
 st.set_page_config(
@@ -16,4 +17,11 @@ st.markdown(
     ### Liên hệ với mình?
     Email: tnsangtrng@gmail.com
 """
+
 )
+import streamlit as st
+
+picture = st.camera_input("Take a picture")
+
+if picture:
+    st.image(picture)
