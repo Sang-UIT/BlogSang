@@ -1,6 +1,5 @@
-from tkinter import Button
 import streamlit as st
-
+from PIL import Image
 st.set_page_config(
     page_title="Blog's Sang",
     page_icon="👋",
