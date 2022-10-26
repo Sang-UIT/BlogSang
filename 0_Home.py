@@ -42,7 +42,10 @@ with col2:
 with col3:
     st.button("Tiểu Thuyết")
 with col4:
-    st.button("Học")
+    if st.button("Học"):
+        switch_page("Học")
+    
+    
 
 
 
