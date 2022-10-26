@@ -41,6 +41,8 @@ with col2:
     st.button("Truyện Ngắn")
 with col3:
     st.button("Tiểu Thuyết")
+with col4:
+    st.button("Học")
 
 
 
