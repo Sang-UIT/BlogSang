@@ -65,15 +65,20 @@ if dataset is not None:
         #one hot encoding for string 
         #find index string
         zz= np.shape(x)[1]
-        while z < zz:
+        zzz=0
+        flag=0
+        while zzz < zz:
             try:
                 dataframe[a[z]].to_numpy(dtype=float)
             except:
+                if(z==zz-1 and flag!=0):
+                    z=z-1
+                flag=flag+1
                 cv_string=(pd.get_dummies(data[:,z])).to_numpy()
                 x= np.delete(x,z,axis=1)
                 x= np.append(x,cv_string,axis=1)
             z=z+1
-            b=b+1
+            zzz=zzz+1
         scale= StandardScaler()
         x= scale.fit_transform(x)
         x_train, x_test, y_train, y_test = train_test_split(
