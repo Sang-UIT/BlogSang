@@ -47,19 +47,35 @@ if dataset is not None:
     if st.button("Run"):
         b=0
         bb=0
-        data = dataframe.to_numpy()
+        b=0
+        data = dataframe.to_numpy()  
         while b<np.shape(a)[0]-1:
             if not(cb[b]):
                 data = np.delete(data,bb,axis=1)
+                dataframe = dataframe.drop(dataframe.columns[bb],axis=1)
                 bb=bb-1
             b=b+1
             bb=bb+1
-        b=0
+        a = dataframe.columns.values
+        z=0
         n= data.shape[1]
         y = data[:,n-1]
         x= np.delete(data,n-1,axis=1)
-        #scale= StandardScaler()
-        #x= scale.fit_transform(x)
+        
+        #one hot encoding for string 
+        #find index string
+        zz= np.shape(x)[1]
+        while z < zz:
+            try:
+                dataframe[a[z]].to_numpy(dtype=float)
+            except:
+                cv_string=(pd.get_dummies(data[:,z])).to_numpy()
+                x= np.delete(x,z,axis=1)
+                x= np.append(x,cv_string,axis=1)
+            z=z+1
+            b=b+1
+        scale= StandardScaler()
+        x= scale.fit_transform(x)
         x_train, x_test, y_train, y_test = train_test_split(
         x, y, train_size=split/100, random_state=1234)
         model_ne = LinearRegression() # MLE
