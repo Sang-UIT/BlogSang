@@ -18,3 +18,6 @@ def switch_page(page_name: str):
     raise ValueError(f"Could not find page {page_name}. Must be one of {page_names}")
 if st.button("Liner Regressions"):
     switch_page("LinerG")
+if st.button("Hot Endcoding for String"):
+    switch_page("Hot_Encode")
+    
